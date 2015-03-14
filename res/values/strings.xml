@@ -8,5 +8,9 @@
     <string name="Float">Float</string>
     <string name="Coded">Codiert</string>
     <string name="DefaultValue">99.9</string>
+    <string name="Pre">Vorzeichen</string>
+    <string name="Ch">Charakteristik</string>
+    <string name="Man">Mantisse</string>
+    <string name="Check">Prüfwert</string>
 
 </resources>

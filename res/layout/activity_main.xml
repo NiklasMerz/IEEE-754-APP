@@ -20,16 +20,6 @@
         android:inputType="numberDecimal"
         android:text="@string/DefaultValue" />
 
-    <TextView
-        android:id="@+id/textView1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/editText1"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="88dp"
-        android:text="@string/Coded"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
-
     <Button
         android:id="@+id/button1"
         android:layout_width="wrap_content"
@@ -39,5 +29,46 @@
         android:layout_marginBottom="89dp"
         android:onClick="Calculate"
         android:text="@string/Calculate" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="36dp"
+        android:text="@string/Check"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/textView3"
+        android:layout_alignParentLeft="true"
+        android:layout_marginBottom="21dp"
+        android:text="@string/Pre"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/textView1"
+        android:layout_alignBottom="@+id/textView1"
+        android:layout_alignRight="@+id/button1"
+        android:text="@string/Ch"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="14dp"
+        android:layout_marginTop="66dp"
+        android:layout_toRightOf="@+id/textView2"
+        android:text="@string/Man"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
 
 </RelativeLayout>
