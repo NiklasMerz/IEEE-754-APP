@@ -7,6 +7,7 @@ import android.app.Activity;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.text.Editable;
+import android.text.Html;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -17,7 +18,7 @@ public class MainActivity extends Activity{
 	int i;
 	float number;
 	Integer bits;
-	String result, check;
+	String result, show, check;
 	String vorzeichen, charakteristik, mantisse;
 
 	@Override
@@ -30,8 +31,8 @@ public class MainActivity extends Activity{
 
 		EditText nField = (EditText)findViewById(R.id.editText1);
 		TextView text1=(TextView)findViewById(R.id.textView1);
-		TextView text2=(TextView)findViewById(R.id.textView2);
-		TextView text3=(TextView)findViewById(R.id.textView3);
+		//TextView text2=(TextView)findViewById(R.id.textView2);
+		//TextView text3=(TextView)findViewById(R.id.textView3);
 		TextView text4=(TextView)findViewById(R.id.textView4);
 
 		Delete();
@@ -52,19 +53,14 @@ public class MainActivity extends Activity{
 			mantisse = mantisse + Character.toString(chars[i]);			
 		}
 
-		text1.setText(vorzeichen);
-		text1.setTextColor(Color.RED);
-
-		text2.setText(charakteristik);
-		text2.setTextColor(Color.YELLOW);
-
-		text3.setText(mantisse);
-		text3.setTextColor(Color.GREEN);
+		
+		show = "<font color='red'>" + vorzeichen + "</font>" + "<font color='yellow'>" + charakteristik + "</font>" + "<font color='green'>" + mantisse + "</font>";		
+		text1.setText(Html.fromHtml(show), TextView.BufferType.SPANNABLE);
 		
 		check = vorzeichen + charakteristik + mantisse;
 
 		if(result.equals(check)){
-			text4.setText("true");
+			text4.setText("");
 		}else{
 			text4.setText(result + "/" + System.getProperty ("line.separator") + check + "//" + chars.length);
 		}
@@ -75,13 +71,13 @@ public class MainActivity extends Activity{
 
 		EditText nField = (EditText)findViewById(R.id.editText1);
 		TextView text1=(TextView)findViewById(R.id.textView1);
-		TextView text2=(TextView)findViewById(R.id.textView2);
-		TextView text3=(TextView)findViewById(R.id.textView3);
+		//TextView text2=(TextView)findViewById(R.id.textView2);
+		//TextView text3=(TextView)findViewById(R.id.textView3);
 		TextView text4=(TextView)findViewById(R.id.textView4);
 
 		text1.setText(vorzeichen);
-		text2.setText(charakteristik);
-		text3.setText(mantisse);
+		//text2.setText(charakteristik);
+		//text3.setText(mantisse);
 		text4.setText(result);
 
 		number = 0;
