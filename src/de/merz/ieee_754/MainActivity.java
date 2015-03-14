@@ -12,6 +12,14 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
+
+/**
+ * Eine App zum Anzeigen des Binaercodes eines Float/Single Wertes
+ * @author Niklas Merz
+ * @version 1.0
+
+ */
+
 @SuppressWarnings("unused")
 public class MainActivity extends Activity{
 
@@ -21,21 +29,27 @@ public class MainActivity extends Activity{
 	String result, show, check;
 	String vorzeichen, charakteristik, mantisse;
 
+	/**
+	 * Initialisieren
+	 */
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 	}
 
+	/**
+	 * Hauptmethode fuer den Button zum Umwandeln.
+	 */
 	public void Calculate(View view){
 
+		
 		EditText nField = (EditText)findViewById(R.id.editText1);
 		TextView text1=(TextView)findViewById(R.id.textView1);
-		//TextView text2=(TextView)findViewById(R.id.textView2);
-		//TextView text3=(TextView)findViewById(R.id.textView3);
 		TextView text4=(TextView)findViewById(R.id.textView4);
 
 		Delete();
+		if(checkFieldEmpty(nField) == true) return;
 
 		number = Float.valueOf(nField.getText().toString());
 		bits = Float.floatToRawIntBits(number);
@@ -53,10 +67,10 @@ public class MainActivity extends Activity{
 			mantisse = mantisse + Character.toString(chars[i]);			
 		}
 
-		
+
 		show = "<font color='red'>" + vorzeichen + "</font>" + "<font color='yellow'>" + charakteristik + "</font>" + "<font color='green'>" + mantisse + "</font>";		
 		text1.setText(Html.fromHtml(show), TextView.BufferType.SPANNABLE);
-		
+
 		check = vorzeichen + charakteristik + mantisse;
 
 		if(result.equals(check)){
@@ -67,17 +81,17 @@ public class MainActivity extends Activity{
 
 	}
 
+	/**
+	 * Setzt alles zurueck
+	 */
 	private void Delete(){
 
-		EditText nField = (EditText)findViewById(R.id.editText1);
+		
+		
 		TextView text1=(TextView)findViewById(R.id.textView1);
-		//TextView text2=(TextView)findViewById(R.id.textView2);
-		//TextView text3=(TextView)findViewById(R.id.textView3);
 		TextView text4=(TextView)findViewById(R.id.textView4);
 
 		text1.setText(vorzeichen);
-		//text2.setText(charakteristik);
-		//text3.setText(mantisse);
 		text4.setText(result);
 
 		number = 0;
@@ -86,6 +100,23 @@ public class MainActivity extends Activity{
 		vorzeichen = "";
 		charakteristik = "";
 		mantisse = "";
+	}
+
+	/**
+	 * Funktion zum Ueberpruefen von Feldern
+
+	 * @param field Feld das ueberprueft wird
+	 * @return true wenn das Feld leer ist, false wenn das Feld einen Wert enthaelt
+	 */
+	public boolean checkFieldEmpty(EditText field){
+
+		if(field.getText().toString().length()  == 0){
+			field.requestFocus();
+			field.setError("Bitte eine Zahl eingeben");
+			return true;
+		}else{
+			return false;
+		}
 	}
 
 
