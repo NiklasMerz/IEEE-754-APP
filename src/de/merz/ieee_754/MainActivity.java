@@ -47,13 +47,18 @@ public class MainActivity extends Activity{
 		EditText nField = (EditText)findViewById(R.id.editText1);
 		TextView text1=(TextView)findViewById(R.id.textView1);
 		TextView text4=(TextView)findViewById(R.id.textView4);
-
+		
 		Delete();
 		if(checkFieldEmpty(nField) == true) return;
 
 		number = Float.valueOf(nField.getText().toString());
 		bits = Float.floatToRawIntBits(number);
-		result = "0" + Integer.toBinaryString(bits); //Negative Werte
+		result = Integer.toBinaryString(bits);
+		
+		//Führende Nullen
+		for(i = result.length(); i < 32; i++){
+			result = "0" + result; 
+		}
 
 		char[] chars = result.toCharArray();
 
@@ -72,27 +77,15 @@ public class MainActivity extends Activity{
 		text1.setText(Html.fromHtml(show), TextView.BufferType.SPANNABLE);
 
 		check = vorzeichen + charakteristik + mantisse;
-
-		if(result.equals(check)){
-			text4.setText("");
-		}else{
-			text4.setText(result + "/" + System.getProperty ("line.separator") + check + "//" + chars.length);
-		}
+		
+		showDebuggString(text4, false, chars);
 
 	}
 
 	/**
-	 * Setzt alles zurueck
+	 * Setzt alle Variablen zurueck
 	 */
 	private void Delete(){
-
-		
-		
-		TextView text1=(TextView)findViewById(R.id.textView1);
-		TextView text4=(TextView)findViewById(R.id.textView4);
-
-		text1.setText(vorzeichen);
-		text4.setText(result);
 
 		number = 0;
 		bits = 0;
@@ -117,6 +110,23 @@ public class MainActivity extends Activity{
 		}else{
 			return false;
 		}
+	}
+	
+	/**
+	 * Zeigt einen String zum Analysieren von Fehlern an
+	 * @param text Textview in die der Debugstring geschrieben werden soll
+	 * @param showalways true setzt den Debugstring immer, false nur wenn sich der zusammengesetzte Wert unterscheidet
+	 * @param chars[] Laenge des Binaercodes 
+	 */
+	private void showDebuggString(TextView text, Boolean showalways, char chars[]){
+		
+		if(result.equals(check) & showalways == false){
+			text.setText("");
+		}else{
+			text.setText(result + "/" + System.getProperty ("line.separator") + check + "//" + chars.length);
+		}
+		
+		if(showalways == true) text.setText(result + "/" + System.getProperty ("line.separator") + check + "//" + chars.length);;
 	}
 
 

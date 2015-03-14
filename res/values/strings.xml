@@ -4,7 +4,7 @@
     <string name="app_name">IEEE-754</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
-    <string name="Calculate">Umrechnen</string>
+    <string name="Calculate">Umwandeln</string>
     <string name="Float">Float</string>
     <string name="Coded">Codiert</string>
     <string name="DefaultValue">99.9</string>
