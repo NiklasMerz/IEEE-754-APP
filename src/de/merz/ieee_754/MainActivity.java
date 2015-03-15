@@ -8,6 +8,7 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.Html;
+import android.text.SpannableStringBuilder;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.RadioButton;
@@ -15,9 +16,9 @@ import android.widget.TextView;
 
 
 /**
- * Eine App zum Anzeigen des Binaercodes eines Float/Single Wertes
+ * Eine App zum Anzeigen des Binaercodes eines Float/Single und Double Wertes
  * @author Niklas Merz
- * @version 1.1
+ * @version 1.5
 
  */
 
@@ -45,7 +46,7 @@ public class MainActivity extends Activity{
 		RadioButton rSingle = (RadioButton)findViewById(R.id.radioS);
 		RadioButton rDouble = (RadioButton)findViewById(R.id.radioD);
 				
-		Delete();
+		
 		if(CheckFieldEmpty(nField) == true) return;
 
 		if(rSingle.isChecked()){
@@ -62,8 +63,8 @@ public class MainActivity extends Activity{
 	/**
 	 * Wandelt eingegebene Zahl in Binaercode in Single Format um und setzt das Ergebniss in Farben formatiert
 	 * 
-	 * @param fieldToRead EditText mit Tahl die Umgewandelt werden soll
-	 * @param text1 TextView in die das Ergebniss gesetzt werden soll
+	 * @param fieldToRead EditText mit Zahl die umgewandelt werden soll
+	 * @param text1 TextView in die das Ergebnis gesetzt werden soll
 	 */
 	private void ConvertToSingle(EditText fieldToRead, TextView text1){
 		
@@ -94,13 +95,15 @@ public class MainActivity extends Activity{
 		for(i = 9; i <= 31; i++){
 			mantisse = mantisse + Character.toString(chars[i]);			
 		}
-
-
+		
+		
+		
 		show = "<font color='red'>" + vorzeichen + "</font>" + "<font color='yellow'>" + charakteristik + "</font>" + "<font color='green'>" + mantisse + "</font>";		
+		
 		text1.setText(Html.fromHtml(show), TextView.BufferType.SPANNABLE);
 
+		//Nur zum testen
 		check = vorzeichen + charakteristik + mantisse;
-		
 		ShowDebuggString((TextView)findViewById(R.id.textView4), false, chars, result, check);
 		
 	}
@@ -108,8 +111,9 @@ public class MainActivity extends Activity{
 	/**
 	 * Wandelt eingegebene Zahl in Binaercode in Double Format um und setzt das Ergebniss in Farben formatiert
 	 * 
-	 * @param fieldToRead EditText mit Tahl die Umgewandelt werden soll
-	 * @param text1 TextView in die das Ergebniss gesetzt werden soll
+	 * @param fieldToRead EditText mit Zahl die umgewandelt werden soll
+	 * @param text1 TextView in die das Ergebnis gesetzt werden soll
+	 * @see ConvertToSingle
 	 */
 	private void ConvertToDouble(EditText fieldToRead, TextView text1){
 		
@@ -145,38 +149,20 @@ public class MainActivity extends Activity{
 		show = "<font color='red'>" + vorzeichen + "</font>" + "<font color='yellow'>" + charakteristik + "</font>" + "<font color='green'>" + mantisse + "</font>";		
 		text1.setText(Html.fromHtml(show), TextView.BufferType.SPANNABLE);
 
+		//Nur zum testen
 		check = vorzeichen + charakteristik + mantisse;
-		
 		ShowDebuggString((TextView)findViewById(R.id.textView4), false, chars, result, check);
 		
 	}
 
-	/**
-	 * Setzt alle Variablen zurueck
-	 */
-	private void Delete(){
-		
-		int i;
-		float number;
-		Integer bits;
-		String result, show, check;
-		String vorzeichen, charakteristik, mantisse;
-
-		number = 0;
-		bits = 0;
-		result = "";
-		vorzeichen = "";
-		charakteristik = "";
-		mantisse = "";
-	}
-
+	
 	/**
 	 * Funktion zum Ueberpruefen von Feldern
 
 	 * @param field Feld das ueberprueft wird
 	 * @return true wenn das Feld leer ist, false wenn das Feld einen Wert enthaelt
 	 */
-	public boolean CheckFieldEmpty(EditText field){
+	private boolean CheckFieldEmpty(EditText field){
 
 		if(field.getText().toString().length()  == 0){
 			field.requestFocus();
@@ -191,7 +177,7 @@ public class MainActivity extends Activity{
 	 * Zeigt einen String zum Analysieren von Fehlern an
 	 * @param text Textview in die der Debugstring geschrieben werden soll
 	 * @param showalways true setzt den Debugstring immer, false nur wenn sich der zusammengesetzte Wert unterscheidet
-	 * @param chars[] Laenge des Binaercodes
+	 * @param chars Array-Laenge des Binaercodes
 	 * @param result Ganzes Ergebnis
 	 * @param check	Zusammengeseztes Ergebnis	
 	 */
