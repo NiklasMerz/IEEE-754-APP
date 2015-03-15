@@ -177,6 +177,13 @@ public class MainActivity extends Activity{
 	}
 
 
+	/**
+	 * Setzt die Startseite
+	 * @param view
+	 */
+	public void Back(View view){
+		setContentView(R.layout.activity_main);
+	}
 	
 	/**
 	 * Setzt Startseite bei Druck auf Zurueck knopf

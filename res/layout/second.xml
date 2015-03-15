@@ -69,4 +69,15 @@
         android:layout_marginTop="22dp"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
+    <Button
+        android:id="@+id/button1"
+        style="?android:attr/buttonStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@+id/info3"
+        android:layout_alignTop="@+id/textView4"
+        android:layout_marginTop="20dp"
+        android:onClick="Back"
+        android:text="@string/Back" />
+
 </RelativeLayout>

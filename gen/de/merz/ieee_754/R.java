@@ -55,6 +55,7 @@ public final class R {
         public static final int main=0x7f080000;
     }
     public static final class string {
+        public static final int Back=0x7f060010;
         public static final int Calculate=0x7f060003;
         public static final int Ch=0x7f060008;
         public static final int Check=0x7f06000a;
