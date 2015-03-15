@@ -15,5 +15,7 @@
     <string name="Single">Single</string>
     <string name="Double">Double</string>
     <string name="Reset">Reset</string>
+    <string name="Enter">Bitte geben sie eine Zahl in Dezimalsystem ein:</string>
+    <string name="Format">In welches Format soll die Zahl umgewandelt werden?</string>
 
 </resources>
