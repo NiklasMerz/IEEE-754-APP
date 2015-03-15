@@ -81,4 +81,27 @@
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:textColor="@android:color/holo_orange_light" />
 
+    <RadioGroup
+        android:id="@+id/radioGroup1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/button1"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="16dp"
+        android:orientation="horizontal" >
+
+        <RadioButton
+            android:id="@+id/radioS"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:text="@string/Single" />
+
+        <RadioButton
+            android:id="@+id/radioD"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/Double" />
+    </RadioGroup>
+
 </RelativeLayout>

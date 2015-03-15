@@ -12,5 +12,7 @@
     <string name="Ch">Charakteristik</string>
     <string name="Man">Mantisse</string>
     <string name="Check">Prüfwert</string>
+    <string name="Single">Single</string>
+    <string name="Double">Double</string>
 
 </resources>

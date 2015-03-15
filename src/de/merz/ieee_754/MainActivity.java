@@ -10,24 +10,19 @@ import android.text.Editable;
 import android.text.Html;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.RadioButton;
 import android.widget.TextView;
 
 
 /**
  * Eine App zum Anzeigen des Binaercodes eines Float/Single Wertes
  * @author Niklas Merz
- * @version 1.0
+ * @version 1.1
 
  */
 
 @SuppressWarnings("unused")
 public class MainActivity extends Activity{
-
-	int i;
-	float number;
-	Integer bits;
-	String result, show, check;
-	String vorzeichen, charakteristik, mantisse;
 
 	/**
 	 * Initialisieren
@@ -46,12 +41,39 @@ public class MainActivity extends Activity{
 		
 		EditText nField = (EditText)findViewById(R.id.editText1);
 		TextView text1=(TextView)findViewById(R.id.textView1);
-		TextView text4=(TextView)findViewById(R.id.textView4);
 		
+		RadioButton rSingle = (RadioButton)findViewById(R.id.radioS);
+		RadioButton rDouble = (RadioButton)findViewById(R.id.radioD);
+				
 		Delete();
-		if(checkFieldEmpty(nField) == true) return;
+		if(CheckFieldEmpty(nField) == true) return;
 
-		number = Float.valueOf(nField.getText().toString());
+		if(rSingle.isChecked()){
+			ConvertToSingle(nField,text1);
+		}else{
+			ConvertToDouble(nField,text1);
+		}
+		
+
+	}
+	
+	
+	
+	/**
+	 * Wandelt eingegebene Zahl in Binaercode in Single Format um und setzt das Ergebniss in Farben formatiert
+	 * 
+	 * @param fieldToRead EditText mit Tahl die Umgewandelt werden soll
+	 * @param text1 TextView in die das Ergebniss gesetzt werden soll
+	 */
+	private void ConvertToSingle(EditText fieldToRead, TextView text1){
+		
+		int i;
+		float number;
+		Integer bits;
+		String result, show, check;
+		String vorzeichen, charakteristik = "", mantisse = "";
+		
+		number = Float.valueOf(fieldToRead.getText().toString());
 		bits = Float.floatToRawIntBits(number);
 		result = Integer.toBinaryString(bits);
 		
@@ -62,6 +84,7 @@ public class MainActivity extends Activity{
 
 		char[] chars = result.toCharArray();
 
+		//String in Bestandteile zerlegen um Farben für die einzelnen Komponenten setzten zu können
 		vorzeichen = Character.toString(chars[0]);
 
 		for(i = 1; i <= 8; i++){
@@ -78,14 +101,66 @@ public class MainActivity extends Activity{
 
 		check = vorzeichen + charakteristik + mantisse;
 		
-		showDebuggString(text4, false, chars);
+		ShowDebuggString((TextView)findViewById(R.id.textView4), false, chars, result, check);
+		
+	}
+	
+	/**
+	 * Wandelt eingegebene Zahl in Binaercode in Double Format um und setzt das Ergebniss in Farben formatiert
+	 * 
+	 * @param fieldToRead EditText mit Tahl die Umgewandelt werden soll
+	 * @param text1 TextView in die das Ergebniss gesetzt werden soll
+	 */
+	private void ConvertToDouble(EditText fieldToRead, TextView text1){
+		
+		int i;
+		double number;
+		long bits;
+		String result, show, check;
+		String vorzeichen, charakteristik = "", mantisse = "";
+		
+		number = Float.valueOf(fieldToRead.getText().toString());
+		bits = Double.doubleToLongBits(number);
+		result = Long.toBinaryString(bits);
+		
+		//Führende Nullen
+		for(i = result.length(); i < 64; i++){
+			result = "0" + result; 
+		}
 
+		char[] chars = result.toCharArray();
+
+		//TODO String zerlegen
+		vorzeichen = Character.toString(chars[0]);
+
+		for(i = 1; i <= 11; i++){
+			charakteristik = charakteristik + Character.toString(chars[i]);			
+		}
+
+		for(i = 12; i <= 63; i++){
+			mantisse = mantisse + Character.toString(chars[i]);			
+		}
+
+
+		show = "<font color='red'>" + vorzeichen + "</font>" + "<font color='yellow'>" + charakteristik + "</font>" + "<font color='green'>" + mantisse + "</font>";		
+		text1.setText(Html.fromHtml(show), TextView.BufferType.SPANNABLE);
+
+		check = vorzeichen + charakteristik + mantisse;
+		
+		ShowDebuggString((TextView)findViewById(R.id.textView4), false, chars, result, check);
+		
 	}
 
 	/**
 	 * Setzt alle Variablen zurueck
 	 */
 	private void Delete(){
+		
+		int i;
+		float number;
+		Integer bits;
+		String result, show, check;
+		String vorzeichen, charakteristik, mantisse;
 
 		number = 0;
 		bits = 0;
@@ -101,7 +176,7 @@ public class MainActivity extends Activity{
 	 * @param field Feld das ueberprueft wird
 	 * @return true wenn das Feld leer ist, false wenn das Feld einen Wert enthaelt
 	 */
-	public boolean checkFieldEmpty(EditText field){
+	public boolean CheckFieldEmpty(EditText field){
 
 		if(field.getText().toString().length()  == 0){
 			field.requestFocus();
@@ -116,9 +191,11 @@ public class MainActivity extends Activity{
 	 * Zeigt einen String zum Analysieren von Fehlern an
 	 * @param text Textview in die der Debugstring geschrieben werden soll
 	 * @param showalways true setzt den Debugstring immer, false nur wenn sich der zusammengesetzte Wert unterscheidet
-	 * @param chars[] Laenge des Binaercodes 
+	 * @param chars[] Laenge des Binaercodes
+	 * @param result Ganzes Ergebnis
+	 * @param check	Zusammengeseztes Ergebnis	
 	 */
-	private void showDebuggString(TextView text, Boolean showalways, char chars[]){
+	private void ShowDebuggString(TextView text, Boolean showalways, char chars[], String result, String check){
 		
 		if(result.equals(check) & showalways == false){
 			text.setText("");
@@ -126,9 +203,7 @@ public class MainActivity extends Activity{
 			text.setText(result + "/" + System.getProperty ("line.separator") + check + "//" + chars.length);
 		}
 		
-		if(showalways == true) text.setText(result + "/" + System.getProperty ("line.separator") + check + "//" + chars.length);;
+		if(showalways == true) text.setText(result + "/" + System.getProperty ("line.separator") + check + "//" + chars.length + "v" + check.length());;
 	}
-
-
 
 }

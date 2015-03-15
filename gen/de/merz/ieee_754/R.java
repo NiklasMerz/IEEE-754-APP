@@ -36,6 +36,9 @@ public final class R {
         public static final int info1=0x7f080003;
         public static final int info2=0x7f080005;
         public static final int info3=0x7f080004;
+        public static final int radioD=0x7f080009;
+        public static final int radioGroup1=0x7f080007;
+        public static final int radioS=0x7f080008;
         public static final int textView1=0x7f080006;
         public static final int textView4=0x7f080002;
     }
@@ -48,9 +51,11 @@ public final class R {
         public static final int Check=0x7f06000a;
         public static final int Coded=0x7f060005;
         public static final int DefaultValue=0x7f060006;
+        public static final int Double=0x7f06000c;
         public static final int Float=0x7f060004;
         public static final int Man=0x7f060009;
         public static final int Pre=0x7f060007;
+        public static final int Single=0x7f06000b;
         public static final int action_settings=0x7f060002;
         public static final int app_name=0x7f060000;
         public static final int hello_world=0x7f060001;
