@@ -130,7 +130,7 @@ public class MainActivity extends Activity{
 
 		char[] chars = result.toCharArray();
 
-		//TODO String zerlegen
+		//String zerlegen
 		vorzeichen = Character.toString(chars[0]);
 
 		for(i = 1; i <= 11; i++){
