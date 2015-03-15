@@ -2,13 +2,13 @@ package de.merz.ieee_754;
 
 
 import de.merz.ieee_754.R;
-import android.R.string;
 import android.app.Activity;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.text.Editable;
 import android.text.Html;
-import android.text.SpannableStringBuilder;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.RadioButton;
@@ -22,7 +22,7 @@ import android.widget.TextView;
 
  */
 
-@SuppressWarnings("unused")
+
 public class MainActivity extends Activity{
 
 	/**
@@ -32,6 +32,34 @@ public class MainActivity extends Activity{
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
+	}
+	
+	/**
+	 * Menue initialisieren
+	 */
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		Bundle icicle = null;
+		super.onCreate(icicle);
+		MenuInflater inflater = getMenuInflater();
+		inflater.inflate(R.menu.main, menu);
+		return true;
+	}
+	
+	/**
+	 * Auswahl im Menue
+	 */
+	public boolean onOptionsItemSelected(MenuItem item) {
+		
+		EditText nField = (EditText)findViewById(R.id.editText1);
+		TextView text1=(TextView)findViewById(R.id.textView1);
+		
+		switch (item.getItemId()) {
+		case R.id.reset:
+			Reset(text1, nField);
+			return super.onOptionsItemSelected(item);
+		}
+		return true;
 	}
 
 	/**
@@ -44,10 +72,9 @@ public class MainActivity extends Activity{
 		TextView text1=(TextView)findViewById(R.id.textView1);
 		
 		RadioButton rSingle = (RadioButton)findViewById(R.id.radioS);
-		RadioButton rDouble = (RadioButton)findViewById(R.id.radioD);
-				
 		
-		if(CheckFieldEmpty(nField) == true) return;
+		//Wenn das Feld leer ist wird eine Fehlermeldung in das Feld gesetzt und das Umwandeln wird abgebrochen
+		if(CheckFieldEmpty(nField)) return;
 
 		if(rSingle.isChecked()){
 			ConvertToSingle(nField,text1);
@@ -57,8 +84,7 @@ public class MainActivity extends Activity{
 		
 
 	}
-	
-	
+		
 	
 	/**
 	 * Wandelt eingegebene Zahl in Binaercode in Single Format um und setzt das Ergebniss in Farben formatiert
@@ -157,12 +183,12 @@ public class MainActivity extends Activity{
 
 	
 	/**
-	 * Funktion zum Ueberpruefen von Feldern
+	 * Funktion zum Ueberpruefen von Feldern, Setzt einen Fehlertext in das Feld, wenn es leer ist.
 
 	 * @param field Feld das ueberprueft wird
 	 * @return true wenn das Feld leer ist, false wenn das Feld einen Wert enthaelt
 	 */
-	private boolean CheckFieldEmpty(EditText field){
+	public boolean CheckFieldEmpty(EditText field){
 
 		if(field.getText().toString().length()  == 0){
 			field.requestFocus();
@@ -173,6 +199,19 @@ public class MainActivity extends Activity{
 		}
 	}
 	
+	
+	/**
+	 * Setzt Text und Feld leer
+	 * @param tV1 TextView zum leer setzen
+	 * @param eT1 EditText zum leer setzen
+	 */
+	public void Reset(TextView tV1, EditText eT1){
+	tV1.setText("");
+	tV1.setTextColor(Color.BLACK);
+	
+	eT1.setText("");
+	}
+	
 	/**
 	 * Zeigt einen String zum Analysieren von Fehlern an
 	 * @param text Textview in die der Debugstring geschrieben werden soll
@@ -181,7 +220,7 @@ public class MainActivity extends Activity{
 	 * @param result Ganzes Ergebnis
 	 * @param check	Zusammengeseztes Ergebnis	
 	 */
-	private void ShowDebuggString(TextView text, Boolean showalways, char chars[], String result, String check){
+	protected void ShowDebuggString(TextView text, Boolean showalways, char chars[], String result, String check){
 		
 		if(result.equals(check) & showalways == false){
 			text.setText("");
