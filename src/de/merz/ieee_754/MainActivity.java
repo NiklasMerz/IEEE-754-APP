@@ -68,11 +68,12 @@ public class MainActivity extends Activity{
 	private void ConvertToSingle(String value){
 
 		TextView text1=(TextView)findViewById(R.id.textView1);
+		TextView text2=(TextView)findViewById(R.id.tvByte);
 		
 		int i;
 		float number;
 		Integer bits;
-		String result, show, check;
+		String result, show, check, byteString;
 		String vorzeichen, charakteristik = "", mantisse = "";
 
 		number = Float.valueOf(value);
@@ -102,10 +103,16 @@ public class MainActivity extends Activity{
 		show = "<font color='red'>" + vorzeichen + "</font>" + "<font color='yellow'>" + charakteristik + "</font>" + "<font color='green'>" + mantisse + "</font>";		
 
 		text1.setText(Html.fromHtml(show), TextView.BufferType.SPANNABLE);
-
+		
+		
+		byteString = ShowBitFormat(result, 32);
+		text2.setText(byteString);
+		
 		//Nur zum testen
 		check = vorzeichen + charakteristik + mantisse;
 		ShowDebuggString((TextView)findViewById(R.id.textView4), false, chars, result, check);
+		
+		
 
 	}
 
@@ -119,11 +126,12 @@ public class MainActivity extends Activity{
 	private void ConvertToDouble(String value){
 
 		TextView text1=(TextView)findViewById(R.id.textView1);
+		TextView text2=(TextView)findViewById(R.id.tvByte);
 		
 		int i;
 		double number;
 		long bits;
-		String result, show, check;
+		String result, show, check, byteString;
 		String vorzeichen, charakteristik = "", mantisse = "";
 
 		number = Float.valueOf(value);
@@ -151,14 +159,30 @@ public class MainActivity extends Activity{
 
 		show = "<font color='red'>" + vorzeichen + "</font>" + "<font color='yellow'>" + charakteristik + "</font>" + "<font color='green'>" + mantisse + "</font>";		
 		text1.setText(Html.fromHtml(show), TextView.BufferType.SPANNABLE);
-
+		
+		byteString = ShowBitFormat(result, 64);
+		text2.setText(byteString);
+		
 		//Nur zum testen
 		check = vorzeichen + charakteristik + mantisse;
 		ShowDebuggString((TextView)findViewById(R.id.textView4), false, chars, result, check);
 
 	}
 
-
+	/**
+	 * Setzt einen String mit Trennstrichen für die Byte Formatierung zusammen
+	 * @param value Wert zum Trennen
+	 * @param length Single 32 bit / Double 64 bit 
+	 * @return String mit Trennstrichen
+	 */
+	private static String ShowBitFormat(String value, Integer length){
+		
+		for(int i = 8; i <= length; i = i + 7){
+			value = value.substring(0, i) + "|" + value.substring(i, value.length());
+		}
+		return value;
+	}
+	
 	/**
 	 * Funktion zum Ueberpruefen von Feldern, Setzt einen Fehlertext in das Feld, wenn es leer ist.
 

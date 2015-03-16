@@ -40,9 +40,11 @@ public final class R {
         public static final int radioD=0x7f090003;
         public static final int radioGroup1=0x7f090001;
         public static final int radioS=0x7f090002;
-        public static final int reset=0x7f09000d;
+        public static final int reset=0x7f09000f;
         public static final int textView1=0x7f09000b;
+        public static final int textView2=0x7f09000d;
         public static final int textView4=0x7f090007;
+        public static final int tvByte=0x7f09000e;
         public static final int tvNumber=0x7f09000c;
         public static final int userInfo1=0x7f090005;
         public static final int userInfo2=0x7f090006;
@@ -65,6 +67,7 @@ public final class R {
         public static final int Enter=0x7f06000e;
         public static final int Float=0x7f060004;
         public static final int Format=0x7f06000f;
+        public static final int Formatted=0x7f060011;
         public static final int Man=0x7f060009;
         public static final int Pre=0x7f060007;
         public static final int Reset=0x7f06000d;
