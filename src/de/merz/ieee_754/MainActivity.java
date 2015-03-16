@@ -186,7 +186,7 @@ public class MainActivity extends Activity{
 	}
 	
 	/**
-	 * Setzt Startseite bei Druck auf Zurueck knopf
+	 * Setzt Startseite bei Druck auf Zurueck Knopf
 	 */
 	public boolean onKeyDown(int keyCode,KeyEvent event ){
 
