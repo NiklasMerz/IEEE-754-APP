@@ -1,13 +1,16 @@
 # IEEE-754-APP
 
-Android App zum Anzeigen von Gleitkommazahlen nach IEE 754
+<code> Only available in German</code><br>
+
+Ein Beispiel wie man mit Java die Umwandlung in Binärcode darstellen kann. Der Code dient als Beispiel für eine Programmierübung. 
+## Android App zum Anzeigen von Gleitkommazahlen nach IEE 754
 
 <a href="https://play.google.com/store/apps/details?id=de.merz.ieee_754">
   <img alt="Android app on Google Play"
        src="https://developer.android.com/images/brand/de_app_rgb_wo_60.png" />
 </a>
 
-
+_____________________________________________________________________________________________________________________
 
 # IEE 754 Rechner Android Dokumentation
 
@@ -25,3 +28,13 @@ Das Programm wird als Android App erstellt. Als IDE (=Entwicklungsumgebung) wird
 
 Der Algorithmus zur Umwandlung soll mit Java werden:
 
+
+
+
+
+
+
+Links
+-------
+[Github](https://github.com/NiklasMerz/IEEE-754-APP)
+[Google Play Store](https://play.google.com/store/apps/details?id=de.merz.ieee_754")
