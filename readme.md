@@ -10,12 +10,6 @@ Ein Beispiel wie man mit Java die Umwandlung in Binärcode darstellen kann. Der 
        src="https://developer.android.com/images/brand/de_app_rgb_wo_60.png" />
 </a>
 
-Links
--------
-[Github](https://github.com/NiklasMerz/IEEE-754-APP)
-[Google Play Store](https://play.google.com/store/apps/details?id=de.merz.ieee_754")
-
-##[JavaDoc](http://niklasmerz.github.io/IEEE-754-APP/JavaDoc/)
 _____________________________________________________________________________________________________________________
 
 # IEE 754 Rechner Android Dokumentation
@@ -40,3 +34,9 @@ Der Algorithmus zur Umwandlung soll mit Java werden:
 
 
 
+Links
+-------
+##[JavaDoc](http://niklasmerz.github.io/IEEE-754-APP/JavaDoc/)
+
+[Github](https://github.com/NiklasMerz/IEEE-754-APP)
+[Google Play Store](https://play.google.com/store/apps/details?id=de.merz.ieee_754")
