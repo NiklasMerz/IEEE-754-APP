@@ -9,17 +9,6 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="de.merz.ieee_754.MainActivity" >
 
-    <EditText
-        android:id="@+id/editText1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="165dp"
-        android:ems="10"
-        android:hint="@string/Float"
-        android:inputType="numberDecimal|numberSigned" />
-
     <Button
         android:id="@+id/button1"
         android:layout_width="wrap_content"
@@ -29,57 +18,6 @@
         android:layout_marginBottom="89dp"
         android:onClick="Calculate"
         android:text="@string/Calculate" />
-
-    <TextView
-        android:id="@+id/textView4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="36dp"
-        android:textAppearance="?android:attr/textAppearanceSmall" />
-
-    <TextView
-        android:id="@+id/info1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_below="@id/info1"
-        android:text="@string/Pre"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:textColor="@android:color/holo_red_dark" />
-
-    <TextView
-        android:id="@+id/info3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/info2"
-        android:layout_alignBottom="@+id/info2"
-        android:layout_alignParentRight="true"
-        android:text="@string/Man"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:textColor="@android:color/holo_green_dark" />
-
-    <TextView
-        android:id="@+id/textView1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/info2"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="80dp"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
-
-    <TextView
-        android:id="@+id/info2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/info1"
-        android:layout_alignBottom="@+id/info1"
-        android:layout_alignRight="@+id/button1"
-        android:text="@string/Ch"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:textColor="@android:color/holo_orange_light" />
 
     <RadioGroup
         android:id="@+id/radioGroup1"
@@ -95,13 +33,51 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:checked="true"
-            android:text="@string/Single" />
+            android:text="@string/Single"
+            android:textColor="@color/textradio" />
 
         <RadioButton
             android:id="@+id/radioD"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/Double" />
+            android:text="@string/Double"
+            android:textColor="@color/textradio" />
+
     </RadioGroup>
+
+    <EditText
+        android:id="@+id/editText1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/radioGroup1"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="109dp"
+        android:ems="10"
+        android:hint="@string/Float"
+        android:inputType="numberDecimal|numberSigned" >
+
+        <requestFocus />
+    </EditText>
+
+    <TextView
+        android:id="@+id/userInfo1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="38dp"
+        android:text="@string/Enter"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <TextView
+        android:id="@+id/userInfo2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/radioGroup1"
+        android:layout_alignLeft="@+id/userInfo1"
+        android:layout_marginBottom="38dp"
+        android:text="@string/Format"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
 
 </RelativeLayout>
