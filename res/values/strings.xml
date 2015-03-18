@@ -5,7 +5,7 @@
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
     <string name="Calculate">Umwandeln</string>
-    <string name="Float">Float</string>
+    <string name="Float">Float/Double</string>
     <string name="Coded">Codiert</string>
     <string name="DefaultValue">99.9</string>
     <string name="Pre">Vorzeichen</string>
@@ -16,7 +16,7 @@
     <string name="Double">Double (64bit)</string>
     <string name="Reset">Reset</string>
     <string name="Enter">Welche Dezimalzahl soll umgewandelt werden?</string>
-    <string name="Format">In welches Format soll die Zahl umgewandelt werden?</string>
+    <string name="Format">In welchem Format soll die Zahl dargestellt werden?</string>
     <string name="Back">Zurück</string>
     <string name="Formatted">In Byte Formatiert:</string>
 
