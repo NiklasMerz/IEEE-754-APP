@@ -44,7 +44,7 @@ public class MainActivity extends Activity{
 		String value = nField.getText().toString();		
 		
 		//Wenn das Feld leer ist wird eine Fehlermeldung in das Feld gesetzt und das Umwandeln wird abgebrochen
-		if(CheckFieldEmpty(nField)) return;
+		if(checkFieldEmpty(nField)) return;
 		//Wechsel auf 2. Seite
 		setContentView(R.layout.second);
 		TextView shownumber = (TextView)findViewById(R.id.tvNumber);
@@ -52,9 +52,9 @@ public class MainActivity extends Activity{
 		
 		//In Single oder Double umwandeln und Binärcode setzten
 		if(rSingle.isChecked()){
-			ConvertToSingle(value);
+			convertToSingle(value);
 		}else{
-			ConvertToDouble(value);
+			convertToDouble(value);
 		}
 	}
 
@@ -65,7 +65,7 @@ public class MainActivity extends Activity{
 	 * @param value Zahl die umgewandelt werden soll
 	 * @param text1 TextView in die das Ergebnis gesetzt werden soll
 	 */
-	private void ConvertToSingle(String value){
+	private void convertToSingle(String value){
 
 		TextView text1=(TextView)findViewById(R.id.textView1);
 		TextView text2=(TextView)findViewById(R.id.tvByte);
@@ -105,12 +105,12 @@ public class MainActivity extends Activity{
 		text1.setText(Html.fromHtml(show), TextView.BufferType.SPANNABLE);
 		
 		
-		byteString = ShowBitFormat(result, 32);
+		byteString = showBitFormat(result, 32);
 		text2.setText(byteString);
 		
 		//Nur zum testen
 		check = vorzeichen + charakteristik + mantisse;
-		ShowDebuggString((TextView)findViewById(R.id.textView4), false, chars, result, check);
+		showDebuggString((TextView)findViewById(R.id.textView4), false, chars, result, check);
 		
 		
 
@@ -123,7 +123,7 @@ public class MainActivity extends Activity{
 	 * @param text1 TextView in die das Ergebnis gesetzt werden soll
 	 * @see ConvertToSingle
 	 */
-	private void ConvertToDouble(String value){
+	private void convertToDouble(String value){
 
 		TextView text1=(TextView)findViewById(R.id.textView1);
 		TextView text2=(TextView)findViewById(R.id.tvByte);
@@ -160,12 +160,12 @@ public class MainActivity extends Activity{
 		show = "<font color='red'>" + vorzeichen + "</font>" + "<font color='yellow'>" + charakteristik + "</font>" + "<font color='green'>" + mantisse + "</font>";		
 		text1.setText(Html.fromHtml(show), TextView.BufferType.SPANNABLE);
 		
-		byteString = ShowBitFormat(result, 64);
+		byteString = showBitFormat(result, 64);
 		text2.setText(byteString);
 		
 		//Nur zum testen
 		check = vorzeichen + charakteristik + mantisse;
-		ShowDebuggString((TextView)findViewById(R.id.textView4), false, chars, result, check);
+		showDebuggString((TextView)findViewById(R.id.textView4), false, chars, result, check);
 
 	}
 
@@ -175,7 +175,7 @@ public class MainActivity extends Activity{
 	 * @param length Single 32 bit / Double 64 bit 
 	 * @return String mit Trennstrichen
 	 */
-	private static String ShowBitFormat(String value, Integer length){
+	public static String showBitFormat(String value, Integer length){
 		
 		for(int i = 8; i <= length; i = i + 7){
 			value = value.substring(0, i) + "|" + value.substring(i, value.length());
@@ -189,7 +189,7 @@ public class MainActivity extends Activity{
 	 * @param field Feld das ueberprueft wird
 	 * @return true wenn das Feld leer ist, false wenn das Feld einen Wert enthaelt
 	 */
-	public boolean CheckFieldEmpty(EditText field){
+	public boolean checkFieldEmpty(EditText field){
 
 		if(field.getText().toString().length()  == 0){
 			field.requestFocus();
@@ -205,7 +205,7 @@ public class MainActivity extends Activity{
 	 * Setzt die Startseite
 	 * @param view
 	 */
-	public void Back(View view){
+	public void back(View view){
 		setContentView(R.layout.activity_main);
 	}
 	
@@ -229,7 +229,7 @@ public class MainActivity extends Activity{
 	 * @param result Ganzes Ergebnis
 	 * @param check	Zusammengeseztes Ergebnis	
 	 */
-	protected void ShowDebuggString(TextView text, Boolean showalways, char chars[], String result, String check){
+	protected static void showDebuggString(TextView text, Boolean showalways, char chars[], String result, String check){
 
 		if(result.equals(check) & showalways == false){
 			text.setText("");

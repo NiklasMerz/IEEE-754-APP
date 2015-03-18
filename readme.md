@@ -32,7 +32,12 @@ Die Oberfläche soll einen Tutorialcharakter haben.
 ## Projektablauf
 Das Programm wird als Android App erstellt. Als IDE (=Entwicklungsumgebung) wird Eclipse mit den Android Plug-ins und dem Android SDK genutzt. Die Oberfläche soll ein Feld zu Eingabe einer Dezimalzahl, eine Auswahl des Datentyps, und eine Legende der Farben haben. Die Schaltflächen zum Umwandel wird eine Java Methode ausführen, die Zahl in Binärcode umandelt, den String aufteilt und farbig darstellt.
 
-Der Algorithmus zur Umwandlung soll mit Java werden:
+Der Algorithmus zur Umwandlung soll mit Java umgesetzt werden: <br>
+Das Programm hat eine Klasse mit allen Methoden die für die Oberfläche und die Umwandlung notwendig sind. Eineder wichtigsten Methoden ist die Methode "Calculate", die ausgeführt wird wenn der Knopf zum umwandeln gedrückt wird. Diese Methode führt je nach gewähltem Datentyp dann die Methode ConvertToSingle bzw. ConvertToDouble aus. Diese Methoden wandeln mit Java Methoden, die die Datentype Float bzw. Double von Haus aus besitzen die eingegebene Dezimalzahl in Binärcode nach IEEE 754 um.
+Dieser Binärcode wird dann um vorangestellte Nullen ergänzt und entsprechend der Bestandteile farblich geteilt ausgegeben.
+
+->IEEE754   
+
 
 
 
