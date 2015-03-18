@@ -12,8 +12,12 @@
     <string name="Ch">Charakteristik</string>
     <string name="Man">Mantisse</string>
     <string name="Check">Prüfwert</string>
-    <string name="Single">Single</string>
-    <string name="Double">Double</string>
+    <string name="Single">Single (32bit)</string>
+    <string name="Double">Double (64bit)</string>
     <string name="Reset">Reset</string>
+    <string name="Enter">Welche Dezimalzahl soll umgewandelt werden?</string>
+    <string name="Format">In welches Format soll die Zahl umgewandelt werden?</string>
+    <string name="Back">Zurück</string>
+    <string name="Formatted">In Byte Formatiert:</string>
 
 </resources>

@@ -3,12 +3,9 @@ package de.merz.ieee_754;
 
 import de.merz.ieee_754.R;
 import android.app.Activity;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.text.Html;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.RadioButton;
@@ -33,77 +30,56 @@ public class MainActivity extends Activity{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 	}
-	
-	/**
-	 * Menue initialisieren
-	 */
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		Bundle icicle = null;
-		super.onCreate(icicle);
-		MenuInflater inflater = getMenuInflater();
-		inflater.inflate(R.menu.main, menu);
-		return true;
-	}
-	
-	/**
-	 * Auswahl im Menue
-	 */
-	public boolean onOptionsItemSelected(MenuItem item) {
-		
-		EditText nField = (EditText)findViewById(R.id.editText1);
-		TextView text1=(TextView)findViewById(R.id.textView1);
-		
-		switch (item.getItemId()) {
-		case R.id.reset:
-			Reset(text1, nField);
-			return super.onOptionsItemSelected(item);
-		}
-		return true;
-	}
 
 	/**
 	 * Hauptmethode fuer den Button zum Umwandeln.
 	 */
-	public void Calculate(View view){
+	public void calculate(View view){
 
-		
+
+
 		EditText nField = (EditText)findViewById(R.id.editText1);
-		TextView text1=(TextView)findViewById(R.id.textView1);
-		
 		RadioButton rSingle = (RadioButton)findViewById(R.id.radioS);
 		
+		String value = nField.getText().toString();		
+		
 		//Wenn das Feld leer ist wird eine Fehlermeldung in das Feld gesetzt und das Umwandeln wird abgebrochen
-		if(CheckFieldEmpty(nField)) return;
-
+		if(checkFieldEmpty(nField)) return;
+		//Wechsel auf 2. Seite
+		setContentView(R.layout.second);
+		TextView shownumber = (TextView)findViewById(R.id.tvNumber);
+		shownumber.setText("Dezimalwert: " + value);
+		
+		//In Single oder Double umwandeln und Binärcode setzten
 		if(rSingle.isChecked()){
-			ConvertToSingle(nField,text1);
+			convertToSingle(value);
 		}else{
-			ConvertToDouble(nField,text1);
+			convertToDouble(value);
 		}
-		
-
 	}
-		
-	
+
+
 	/**
 	 * Wandelt eingegebene Zahl in Binaercode in Single Format um und setzt das Ergebniss in Farben formatiert
 	 * 
-	 * @param fieldToRead EditText mit Zahl die umgewandelt werden soll
+	 * @param value Zahl die umgewandelt werden soll
 	 * @param text1 TextView in die das Ergebnis gesetzt werden soll
 	 */
-	private void ConvertToSingle(EditText fieldToRead, TextView text1){
+	private void convertToSingle(String value){
+
+		TextView text1=(TextView)findViewById(R.id.textView1);
+		TextView text2=(TextView)findViewById(R.id.tvByte);
 		
 		int i;
 		float number;
 		Integer bits;
-		String result, show, check;
+		String result, show, check, byteString;
 		String vorzeichen, charakteristik = "", mantisse = "";
-		
-		number = Float.valueOf(fieldToRead.getText().toString());
+
+		number = Float.valueOf(value);
 		bits = Float.floatToRawIntBits(number);
 		result = Integer.toBinaryString(bits);
-		
+
 		//Führende Nullen
 		for(i = result.length(); i < 32; i++){
 			result = "0" + result; 
@@ -121,38 +97,47 @@ public class MainActivity extends Activity{
 		for(i = 9; i <= 31; i++){
 			mantisse = mantisse + Character.toString(chars[i]);			
 		}
-		
-		
-		
-		show = "<font color='red'>" + vorzeichen + "</font>" + "<font color='yellow'>" + charakteristik + "</font>" + "<font color='green'>" + mantisse + "</font>";		
-		
-		text1.setText(Html.fromHtml(show), TextView.BufferType.SPANNABLE);
 
+
+
+		show = "<font color='red'>" + vorzeichen + "</font>" + "<font color='yellow'>" + charakteristik + "</font>" + "<font color='green'>" + mantisse + "</font>";		
+
+		text1.setText(Html.fromHtml(show), TextView.BufferType.SPANNABLE);
+		
+		
+		byteString = showBitFormat(result, 32);
+		text2.setText(byteString);
+		
 		//Nur zum testen
 		check = vorzeichen + charakteristik + mantisse;
-		ShowDebuggString((TextView)findViewById(R.id.textView4), false, chars, result, check);
+		showDebuggString((TextView)findViewById(R.id.textView4), false, chars, result, check);
 		
+		
+
 	}
-	
+
 	/**
 	 * Wandelt eingegebene Zahl in Binaercode in Double Format um und setzt das Ergebniss in Farben formatiert
 	 * 
-	 * @param fieldToRead EditText mit Zahl die umgewandelt werden soll
+	 * @param value Zahl die umgewandelt werden soll
 	 * @param text1 TextView in die das Ergebnis gesetzt werden soll
 	 * @see ConvertToSingle
 	 */
-	private void ConvertToDouble(EditText fieldToRead, TextView text1){
+	private void convertToDouble(String value){
+
+		TextView text1=(TextView)findViewById(R.id.textView1);
+		TextView text2=(TextView)findViewById(R.id.tvByte);
 		
 		int i;
 		double number;
 		long bits;
-		String result, show, check;
+		String result, show, check, byteString;
 		String vorzeichen, charakteristik = "", mantisse = "";
-		
-		number = Float.valueOf(fieldToRead.getText().toString());
+
+		number = Float.valueOf(value);
 		bits = Double.doubleToLongBits(number);
 		result = Long.toBinaryString(bits);
-		
+
 		//Führende Nullen
 		for(i = result.length(); i < 64; i++){
 			result = "0" + result; 
@@ -174,13 +159,29 @@ public class MainActivity extends Activity{
 
 		show = "<font color='red'>" + vorzeichen + "</font>" + "<font color='yellow'>" + charakteristik + "</font>" + "<font color='green'>" + mantisse + "</font>";		
 		text1.setText(Html.fromHtml(show), TextView.BufferType.SPANNABLE);
-
+		
+		byteString = showBitFormat(result, 64);
+		text2.setText(byteString);
+		
 		//Nur zum testen
 		check = vorzeichen + charakteristik + mantisse;
-		ShowDebuggString((TextView)findViewById(R.id.textView4), false, chars, result, check);
-		
+		showDebuggString((TextView)findViewById(R.id.textView4), false, chars, result, check);
+
 	}
 
+	/**
+	 * Setzt einen String mit Trennstrichen für die Byte Formatierung zusammen
+	 * @param value Wert zum Trennen
+	 * @param length Single 32 bit / Double 64 bit 
+	 * @return String mit Trennstrichen
+	 */
+	public static String showBitFormat(String value, Integer length){
+		
+		for(int i = 8; i <= length; i = i + 7){
+			value = value.substring(0, i) + "|" + value.substring(i, value.length());
+		}
+		return value;
+	}
 	
 	/**
 	 * Funktion zum Ueberpruefen von Feldern, Setzt einen Fehlertext in das Feld, wenn es leer ist.
@@ -188,7 +189,7 @@ public class MainActivity extends Activity{
 	 * @param field Feld das ueberprueft wird
 	 * @return true wenn das Feld leer ist, false wenn das Feld einen Wert enthaelt
 	 */
-	public boolean CheckFieldEmpty(EditText field){
+	public boolean checkFieldEmpty(EditText field){
 
 		if(field.getText().toString().length()  == 0){
 			field.requestFocus();
@@ -198,20 +199,28 @@ public class MainActivity extends Activity{
 			return false;
 		}
 	}
-	
-	
+
+
 	/**
-	 * Setzt Text und Feld leer
-	 * @param tV1 TextView zum leer setzen
-	 * @param eT1 EditText zum leer setzen
+	 * Setzt die Startseite
+	 * @param view
 	 */
-	public void Reset(TextView tV1, EditText eT1){
-	tV1.setText("");
-	tV1.setTextColor(Color.BLACK);
-	
-	eT1.setText("");
+	public void back(View view){
+		setContentView(R.layout.activity_main);
 	}
 	
+	/**
+	 * Setzt Startseite bei Druck auf Zurueck Knopf
+	 */
+	public boolean onKeyDown(int keyCode,KeyEvent event ){
+
+		if(keyCode == KeyEvent.KEYCODE_BACK){
+
+			setContentView(R.layout.activity_main);
+		}
+		return false;
+	}
+
 	/**
 	 * Zeigt einen String zum Analysieren von Fehlern an
 	 * @param text Textview in die der Debugstring geschrieben werden soll
@@ -220,14 +229,14 @@ public class MainActivity extends Activity{
 	 * @param result Ganzes Ergebnis
 	 * @param check	Zusammengeseztes Ergebnis	
 	 */
-	protected void ShowDebuggString(TextView text, Boolean showalways, char chars[], String result, String check){
-		
+	protected static void showDebuggString(TextView text, Boolean showalways, char chars[], String result, String check){
+
 		if(result.equals(check) & showalways == false){
 			text.setText("");
 		}else{
 			text.setText(result + "/" + System.getProperty ("line.separator") + check + "//" + chars.length);
 		}
-		
+
 		if(showalways == true) text.setText(result + "/" + System.getProperty ("line.separator") + check + "//" + chars.length + "v" + check.length());;
 	}
 
