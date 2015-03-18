@@ -34,7 +34,7 @@ public class MainActivity extends Activity{
 	/**
 	 * Hauptmethode fuer den Button zum Umwandeln.
 	 */
-	public void Calculate(View view){
+	public void calculate(View view){
 
 
 
