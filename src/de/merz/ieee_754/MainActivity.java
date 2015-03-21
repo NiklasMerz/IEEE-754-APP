@@ -15,7 +15,7 @@ import android.widget.TextView;
 /**
  * Eine App zum Anzeigen des Binaercodes eines Float/Single und Double Wertes
  * @author Niklas Merz
- * @version 1.5
+ * @version 1.5.1
 
  */
 
