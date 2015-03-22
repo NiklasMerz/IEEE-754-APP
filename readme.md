@@ -30,10 +30,10 @@ Die Anwendung soll ein Feld zur Eingabe, eine Auswahlmöglichkeit zwischen Singl
 Die Oberfläche soll einen Tutorialcharakter haben.
 
 ## Projektablauf
-Das Programm wird als Android App erstellt. Als IDE (=Entwicklungsumgebung) wird Eclipse mit den Android Plug-ins und dem Android SDK genutzt. Die Oberfläche soll ein Feld zu Eingabe einer Dezimalzahl, eine Auswahl des Datentyps, und eine Legende der Farben für die Teile des Binärcodes haben. Die Schaltflächen zum Umwandel wird eine Java Methode ausführen, die Zahl in Binärcode umandelt, den String aufteilt und farbig darstellt.
+Das Programm wird als Android App erstellt. Als IDE (=Entwicklungsumgebung) wird Eclipse mit den Android Plug-ins und dem Android SDK genutzt. Die Oberfläche soll ein Feld zu Eingabe einer Dezimalzahl, eine Auswahl des Datentyps, und eine Legende der Farben für die Teile des Binärcodes haben. Die Schaltflächen zum Umwandel wird eine Java Methode ausführen, die Zahl in Binärcode umandelt, den String aufteilt und diesen farbig darstellt.
 
 <u>Der Algorithmus zur Umwandlung soll mit Java umgesetzt werden: </u> <br>
-Das Programm hat eine Klasse mit allen Methoden die für die Oberfläche und die Umwandlung notwendig sind. Eineder wichtigsten Methoden ist die Methode "Calculate", die ausgeführt wird wenn der Knopf zum umwandeln gedrückt wird. Diese Methode führt je nach gewähltem Datentyp dann die Methode ConvertToSingle bzw. ConvertToDouble aus. Diese Methoden wandeln mit Java Methoden, die die Datentype Float bzw. Double von Haus aus besitzen die eingegebene Dezimalzahl in Binärcode nach IEEE 754 um.
+Das Programm hat eine Klasse mit allen Methoden die für die Oberfläche und die Umwandlung notwendig sind. Eine der wichtigsten Methoden ist die Methode "calculate", die ausgeführt wird wenn der Knopf zum Umwandeln gedrückt wird. Diese Methode führt je nach gewähltem Datentyp dann die Methode convertToSingle bzw. convertToDouble aus. Diese Methoden wandeln mit Java Methoden, die die Datentype Float bzw. Double von Haus aus besitzen die eingegebene Dezimalzahl in Binärcode nach IEEE 754 um.
 Dieser Binärcode wird dann um vorangestellte Nullen ergänzt und entsprechend der Bestandteile farblich geteilt ausgegeben.
 
 Der wichtigste Teil des Programms sind diese drei Zeilen
@@ -46,7 +46,7 @@ result = Integer.toBinaryString(bits);<br>
 
 Der eingebene Wert wird in das Datenformat Float umgewandelt. Mit der Methode <code>Float.flaotToRawIntBits()</code> kann Java den Binärcode des Floatwertes in einen Integerwert ausgeben, der dann mit <code>Integer.toBinaryString()</code> in einen String umgewandelt wird.
 
-Dieser String wird dann in die drei Bestandteile, die mit der Norm festgelegt wurden, zerlegt. Das erste Bit legt das Vorzeichen fest und wird rot markiert. Eins bedeutet die Zahl ist negativ und ist das Bit Null ist die Zahl positiv. Die nächsten acht bit legen die Charaketistik fest. Die Charakteristik beschreibt den Exponeten zur Basis 2 multiplieziert mit dem Bias (2^n-1 - 1). Die restlichen Bits nennt man Mantisse, also die Basis.
+Dieser String wird dann in die drei Bestandteile, die mit der Norm festgelegt wurden, zerlegt. Das erste Bit legt das Vorzeichen fest und wird rot markiert. Eins bedeutet die Zahl ist negativ und ist das Bit Null ist die Zahl positiv. Die nächsten acht bit legen die Charaketistik fest. Die Charakteristik beschreibt den Exponeten zur Basis 2 multiplieziert mit dem Bias (2^n-1 - 1), wobei n die Anzahl der zur Verfügung stehenden Bits ist. Die restlichen Bits nennt man Mantisse, also die Basis.
 
 
 
