@@ -18,7 +18,7 @@ Links
 
 _____________________________________________________________________________________________________________________
 
-# IEE 754 Rechner Android Dokumentation
+# IEEE 754 Rechner Android Dokumentation
 
 ## Aufgabe
 
