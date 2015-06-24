@@ -54,7 +54,7 @@ Das Programm kann zusätzlich noch die Zahl im Format Double darstellen. Der Bin
  
 
 
-
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/NiklasMerz/ieee-754-app/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
 
 
 
