@@ -5,7 +5,7 @@
 Ein Beispiel wie man mit Java die Umwandlung in Binärcode darstellen kann. Der Code dient als Beispiel für eine Programmierübung. 
 ## Android App zum Anzeigen von Gleitkommazahlen nach IEE 754
 
-<a href="https://play.google.com/store/apps/details?id=de.merz.ieee_754&utm_source=global_co&utm_medium=prtnr&utm_content=Mar2515&utm_campaign=PartBadge&pcampaignid=MKT-AC-global-none-all-co-pr-py-PartBadges-Oct1515-1"><img alt="Get it on Google Play" src="https://play.google.com/intl/en_us/badges/images/apps/de-play-badge-border.png" /></a>
+<a href="https://play.google.com/store/apps/details?id=de.merz.ieee_754&utm_source=global_co&utm_medium=prtnr&utm_content=Mar2515&utm_campaign=PartBadge&pcampaignid=MKT-AC-global-none-all-co-pr-py-PartBadges-Oct1515-1"><img alt="Get it on Google Play" src="https://play.google.com/intl/en_us/badges/images/apps/de-play-badge.png"/></a>
 
 Links
 -------
@@ -47,4 +47,10 @@ Dieser String wird dann in die drei Bestandteile, die mit der Norm festgelegt wu
 
 
 
-Das Programm kann zusätzlich noch die Zahl im Format Double darstellen. Der Binärcode hat in diesem Format 64 Bit und kann dementsprechend einen größeren Zahlenbereich abdecken.   
+Das Programm kann zusätzlich noch die Zahl im Format Double darstellen. Der Binärcode hat in diesem Format 64 Bit und kann dementsprechend einen größeren Zahlenbereich abdecken.
+
+
+
+
+
+Android, Google Play und das Google Play-Logo sind Marken von Google Inc.   
