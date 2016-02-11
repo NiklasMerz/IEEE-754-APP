@@ -5,15 +5,12 @@
 Ein Beispiel wie man mit Java die Umwandlung in Binärcode darstellen kann. Der Code dient als Beispiel für eine Programmierübung. 
 ## Android App zum Anzeigen von Gleitkommazahlen nach IEE 754
 
-<a href="https://play.google.com/store/apps/details?id=de.merz.ieee_754">
-  <img alt="Android app on Google Play"
-       src="https://developer.android.com/images/brand/de_app_rgb_wo_60.png" />
-</a>
+<a href="https://play.google.com/store/apps/details?id=de.merz.ieee_754&utm_source=global_co&utm_medium=prtnr&utm_content=Mar2515&utm_campaign=PartBadge&pcampaignid=MKT-AC-global-none-all-co-pr-py-PartBadges-Oct1515-1"><img alt="Get it on Google Play" src="https://play.google.com/intl/en_us/badges/images/apps/de-play-badge-border.png" /></a>
 
 Links
 -------
 [Github](https://github.com/NiklasMerz/IEEE-754-APP)
-[Google Play Store](https://play.google.com/store/apps/details?id=de.merz.ieee_754")
+[Google Play Store](https://play.google.com/store/apps/details?id=de.merz.ieee_754)
 ##[JavaDoc](http://niklasmerz.github.io/IEEE-754-APP/JavaDoc/)
 
 _____________________________________________________________________________________________________________________
@@ -51,12 +48,3 @@ Dieser String wird dann in die drei Bestandteile, die mit der Norm festgelegt wu
 
 
 Das Programm kann zusätzlich noch die Zahl im Format Double darstellen. Der Binärcode hat in diesem Format 64 Bit und kann dementsprechend einen größeren Zahlenbereich abdecken.   
- 
-
-
-[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/NiklasMerz/ieee-754-app/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
-
-
-
-
-
